@@ -64,7 +64,7 @@ If a new update introduces critical problems, have a clear and tested rollback s
 
 #### Consider scheduling and maintenance windows
 
-You can use [Automation](/azure/automation/overview) accounts to help orchestrate schedules for software updates within your cloud environment. 
+You can use [Automation](/azure/automation/overview) accounts to help orchestrate schedules for software updates within your cloud environment.
 
 Use a blue-green deployment model or Azure App Service deployment slot to help minimize the overall time that you need during a maintenance window for any given software update. Remember that Azure services update the underlying infrastructure and might affect your active VMs. For more information, see [Azure Service Health](https://azure.microsoft.com/get-started/azure-portal/service-health/#overview) in your Azure portal.
 
@@ -77,7 +77,7 @@ You can use Azure Policy to:
 - Enforce compliance and governance standards, such as audit and compliance reporting.
 - Provide resource management and cost control, such as resource consistency and cost management.
 - Provide security and access control, such as security baselines and role-based access control (RBAC).
-  
+
 #### Manage dependencies and compatibility
 
 Properly document libraries, frameworks, and any partner services that your application relies on. Use infrastructure as code, such as Azure Resource Manager templates (ARM templates) or Terraform, to define and manage cloud resources with consistent configurations. Use this approach to reduce the risk of environmental drift.
@@ -168,9 +168,9 @@ A Linux VM has a dedicated host in Azure that it interacts with. Metrics are aut
 1. To see how the host VM performs, select **Metrics** in the **Monitoring** section, and then choose any of the *[Host]* metrics under **Available metrics**.
 
    :::image type="content" source="images/management-monitoring/host-metrics.png" alt-text="Screenshot that shows the Metrics page in the Azure portal." lightbox="images/management-monitoring/host-metrics.png":::
-  
+
 ### Enable advanced monitoring
-  
+
 To enable advanced monitoring in Azure Monitor for VMs:
 
 1. In the Azure portal, select **Resource groups**, select **myResourceGroupMonitor**, and then select **myVM** in the resource list.
@@ -182,27 +182,43 @@ To enable advanced monitoring in Azure Monitor for VMs:
 1. On the **Azure Monitor Insights onboarding** page, if you have an existing Log Analytics workspace in the same subscription, select it in the drop-down list.
 
    The list preselects the default workspace and location where the VM is deployed in the subscription.
-  
+
    > [!Note]
    >
    > To create a new Log Analytics workspace to store the monitoring data from the VM, see [Create a Log Analytics workspace](/azure/azure-monitor/learn/quick-create-workspace). The workspace must belong to one of the [supported regions](/azure/azure-monitor/insights/vminsights-configure-workspace#supported-regions).
-  
+
    After you enable monitoring, you might need to wait several minutes before you can view the performance metrics for the VM.
 
    :::image type="content" source="images/management-monitoring/wait-page.png" alt-text="Screenshot that shows the wait page." lightbox="images/management-monitoring/wait-page.png":::
-  
+
 ### View VM performance metrics
-  
+
 Azure Monitor for VMs includes a set of performance charts that target several key performance indicators to help you determine how well a VM performs. To access the charts from your VM, do the following steps.
 
 1. In the Azure portal, select **Resource groups**, select **myResourceGroupMonitor**, and then select **myVM** in the resource list.
 1. In the **Monitoring** section, select **Insights**.
 1. Select the **Performance** tab. This page includes performance usage charts and also provides a table for each discovered logical disk, its capacity, usage, and the total average of each measurement.
-  
+
+### Use Performance Diagnostics in Azure Monitor to troubleshoot VM performance issues
+
+Performance Diagnostics ([PerfInsights](https://learn.microsoft.com/en-us/azure/azure-monitor/vm/performance-diagnostics?tabs=linux)) helps identify and troubleshoot performance issues on Azure virtual machines. It provides insights into high resource usage such as high CPU, memory, and disk usage, and helps you understand the root cause of performance issues.
+
+Run Performance Diagnostics directly from the Azure portal where you can review insights and reports about logs, configuration, and diagnostics data for the VM. Use this information to diagnose your issue before contacting Microsoft Support.
+
+Performance Diagnostics stores all insights and reports in a storage account that you can configure for short data retention to minimize costs.
+
+### Red Hat Lightspeed
+
+Red Hat Lightspeed is a Software-as-a-Service (SaaS) application included with almost every subscription to Red Hat Enterprise Linux, OpenShift Container Platform, and Ansible Automation Platform.
+
+Powered by predictive analytics, Red Hat Lightspeed gets smarter with every additional piece of intelligence and data. It can automatically discover relevant insights, recommend tailored, proactive, next actions, and even automate tasks. Using Red Hat Lightspeed, customers can benefit from the experience and technical knowledge of Red Hat Certified Engineers, making it easier to identify, prioritize and resolve issues before business operations are affected.
+
+For documentation on how to install please see: [Lightspeed on RHEL](https://docs.redhat.com/en/documentation/red_hat_lightspeed/1-latest/html/getting_started_with_red_hat_lightspeed/install-for-rhel)
+
 ### Create alerts
-  
+
 You can create alerts based on specific performance metrics. Use alerts to get notifications when certain events occur. For example you can get an alert when the average CPU usage exceeds a certain threshold or the available free disk space goes below a certain amount. You can view alerts in the Azure portal or receive them via email. You can also trigger Automation runbooks or Azure Logic Apps when you generate alerts.
-  
+
 The following example creates an alert for average CPU usage.
 
 1. In the Azure portal, select **Resource groups**, select **myResourceGroupMonitor**, and then select **myVM** in the resource list.

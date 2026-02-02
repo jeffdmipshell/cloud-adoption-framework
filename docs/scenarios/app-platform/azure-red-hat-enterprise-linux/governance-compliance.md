@@ -9,7 +9,7 @@ ms.topic: concept-article
 
 # Governance and compliance considerations for Red Hat Enterprise Linux on Azure
 
-This article describes considerations and recommendations for Red Hat Enterprise Linux (RHEL) operating system images and instances. Efficient and effective governance and compliance in a cloud environment requires diligent effort. 
+This article describes considerations and recommendations for Red Hat Enterprise Linux (RHEL) operating system images and instances. Efficient and effective governance and compliance in a cloud environment requires diligent effort.
 
 Compliance for RHEL deployments in Azure refers to the methods that you use to define, measure, and report on how systems conform to a rule, such as a specification, policy, or standard. Your organization likely has usage requirements for your system. Governance refers to the structures and processes that you use to define the specifications that you need to meet. Governance also includes how you enforce those specifications and how you remediate misalignment.
 
@@ -29,7 +29,7 @@ The Security Content and Automation Protocol (SCAP) provides these checklists. S
 
 Red Hat also contributes to the open-source projects that develop the standard languages and tools to implement the checklists. The OpenSCAP open project provides an integration point for these efforts with Red Hat software. The OpenSCAP project combines standardized components to create tools that you can use to create, maintain, scan, report, and analyze the results of compliance definitions.
 
-The compliance definitions are written in Open Vulnerability and Assessment Language (OVAL) and Extensible Configuration Checklist Description Format (XCCDF). Both formats are represented in XML. Think of OVAL as a means to define and measure a logical assertion about the state of an endpoint system. Think of XCCDF as a means to express, organize, and manage those assertions into security policies. The OpenSCAP scanner can consume both of these document types.  
+The compliance definitions are written in Open Vulnerability and Assessment Language (OVAL) and Extensible Configuration Checklist Description Format (XCCDF). Both formats are represented in XML. Think of OVAL as a means to define and measure a logical assertion about the state of an endpoint system. Think of XCCDF as a means to express, organize, and manage those assertions into security policies. The OpenSCAP scanner can consume both of these document types.
 
 The [Compliance as Code open-source project](https://www.redhat.com/blog/compliance-code-extending-compliance-automation-process-improvement) delivers content in SCAP, Ansible, and other formats. You typically use SCAP for measuring and reporting and use Ansible for remediation.
 
@@ -59,23 +59,15 @@ Governance in Azure includes regulatory compliance and also cost, resource manag
 
 Red Hat provides validated content to meet governance needs. When you determine baseline and mandatory compliance requirements, thoroughly review existing sources of compliance content and automation code. To maintain comprehensive codebases, Red Hat, Microsoft, and Microsoft security partners work closely with compliance standards bodies. Comprehensive codebases simplify compliance evaluation. You can use utilities, such as the SCAP workbench that's included with every RHEL subscription, to take advantage of existing content and tailor it to meet your specific needs. For each major release of RHEL, Red Hat provides a SCAP Security guide (SSG) that contains the published XCCDF baselines for well-known compliance standards.
 
-For example, the SSG for RHEL 9 contains:
+For example, the [SSG for RHEL 10](https://github.com/ComplianceAsCode/content/releases) contains these important highlights:
 
-- ANSSI-BP-028 - Enhanced, High, Intermediate, Minimal
-- CCN RHEL 9 - Advanced, Intermediate, Basic
-- Center for Internet Security (CIS) RHEL 9 Benchmark for Level 2 - Server
-- CIS RHEL 9 Benchmark for Level 1 - Server
-- CIS RHEL 9 Benchmark for Level 1 - Workstation
-- CIS RHEL 9 Benchmark for Level 2 - Workstation
-- [DRAFT] Controlled Unclassified Information in non-federal information systems and organizations (NIST 800-171)
-- Australian Cyber Security Centre (ACSC) Essential Eight
-- ACSC Information Security Manual (ISM) Official
-- HIPAA
-- Protection Profile for General Purpose Operating Systems
-- PCI DSS v3.2.1 Control Baseline for RHEL 9
-- PCI DSS v4.0 Control Baseline for RHEL 7, RHEL 8 (RHEL-1808), and RHEL 9
-- [DRAFT] DISA STIG for RHEL 9
-- [DRAFT] DISA STIG with graphical user interface (GUI) for RHEL 9
+- Add rhcos4 Profile for BSI Grundschutz [#13121](https://github.com/ComplianceAsCode/content/pull/13121)
+- Create SLE15 general profile [#13882](https://github.com/ComplianceAsCode/content/pull/13882)
+- Fix crypto policy settings in RHEL CIS profiles [#14120](https://github.com/ComplianceAsCode/content/pull/14120)
+- Refresh CIS Control File for RHEL10 release 1.0 [#13870](https://github.com/ComplianceAsCode/content/pull/13870)
+- Remove deprecated CIS OpenShift 1.4.0 and 1.5.0 profiles [#13832](https://github.com/ComplianceAsCode/content/pull/13832)
+- Remove OCP STIG V1R1 [#13848](https://github.com/ComplianceAsCode/content/pull/13848)
+- Remove OCP STIG V2R1 [#13849](https://github.com/ComplianceAsCode/content/pull/13849)
 
 The Red Hat Product Security Incident Response Team provides a published stream of known Common Vulnerabilities and Exposures (CVE) information for Red Hat products in OVAL format. Red Hat recommends that you use these resources as part of your compliance implementation in Azure.
 
@@ -98,13 +90,15 @@ Use Microsoft Cost Management to manage and [track costs](/azure/cloud-adoption-
 
 Govern your Azure resource organization to help manage and secure cloud resources efficiently, especially as the complexity of your enterprise environment grows. Azure has several tools and services that support effective governance and ensure that resources are consistently managed, compliant with policies, and optimized for both performance and cost.
 
-Use [Azure Policy](/azure/governance/policy/overview) as a guardrail to keep your environment compliant. Use [template specs](/azure/azure-resource-manager/templates/template-specs) to ensure that deployments meet your identity, security, cost, and other requirements by default. Ensure that you have a [naming standard](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) for your Azure resources. A naming standard makes it easier for you to manage and configure your environment over time. Use management groups and policies to organize your resources within landing zones before you deploy workloads into your Azure tenant. 
+Use [Azure Policy](/azure/governance/policy/overview) as a guardrail to keep your environment compliant. Use [template specs](/azure/azure-resource-manager/templates/template-specs) to ensure that deployments meet your identity, security, cost, and other requirements by default. Ensure that you have a [naming standard](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) for your Azure resources. A naming standard makes it easier for you to manage and configure your environment over time. Use management groups and policies to organize your resources within landing zones before you deploy workloads into your Azure tenant.
 
 For comprehensive recommendations about subscription design, see [Cloud Adoption Framework subscription guidance](/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-subscriptions#organization-and-governance-design-considerations).
 
 ### Enforcement
 
 Use [Azure Policy](/azure/governance/policy/overview) to enforce governance standards and implement regulatory initiatives. Azure policies are guardrails that help enforce compliance across security, cost, regulatory compliance, resources, and management. You can use the compliance dashboard to view compliance for each resource or policy. You can also use Azure Policy to perform remediation.
+
+Use Policy to [Audit Azure Security for Linux](https://learn.microsoft.com/en-us/azure/osconfig/overview-baseline)
 
 You can use Red Hat Satellite with Ansible Automation Platform to develop pipelines for content and image delivery that integrate your workload compliance requirements.
 

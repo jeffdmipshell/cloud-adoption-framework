@@ -25,10 +25,10 @@ In general, a RHEL deployment in a hybrid-cloud environment should:
   - Ensure uniformity.
   - Accelerate the implementation process.
   - Enhance the security framework of a hybrid cloud Linux infrastructure.
-- Apply policies uniformly to multiple instances simultaneously. Use this approach so that you don't have to use automation to modify each instance in the infrastructure when a change occurs.  
+- Apply policies uniformly to multiple instances simultaneously. Use this approach so that you don't have to use automation to modify each instance in the infrastructure when a change occurs.
 - Support centralized, secure, differentiated instance-level access control by using host-based access control, delegation, and other rules.
 - Centrally manage system-level privilege escalation rules across the identity authority. Apply this policy consistently across individual instances and groups of instances within the environment.
-- Support or provide modern automation tooling capabilities to test and consistently implement security configurations across fleets of systems. You should design security automation into a hybrid-cloud deployment from the beginning.  
+- Support or provide modern automation tooling capabilities to test and consistently implement security configurations across fleets of systems. You should design security automation into a hybrid-cloud deployment from the beginning.
 - Support the integration of existing legacy enterprise single sign-on (SSO) capabilities to ease migration burdens, maintain consistency of security operations, and support modern integrations for cloud-based deployments.
 
 ### Implement authentication
@@ -40,7 +40,7 @@ Linux deployments tend to implement local user authentication environments at th
 - A set of groups that a user belongs to is fixed when they sign in. Membership changes are only applied to new sessions.
 - The authentication and authorization flow of a user is directly tied to the sign-in session that's active as a result of authentication.
 
-Previously, user-initiated shell sessions that were based on these identities were the primary means of interaction with applications on Linux. With the move to web, mobile, and cloud-oriented user interfaces, applications that use this pattern of identity consumption are less common.  
+Previously, user-initiated shell sessions that were based on these identities were the primary means of interaction with applications on Linux. With the move to web, mobile, and cloud-oriented user interfaces, applications that use this pattern of identity consumption are less common.
 
 Today, these identities are typically a support mechanism when you run isolated applications or services on an operating system. Application-level identities don't necessarily have to be the same as the system-level users. But the system-level identity is still critical to efficiently run and secure a Linux infrastructure that runs at scale in a cloud environment.
 
@@ -50,7 +50,7 @@ You can use various tools that provide centralized security within a Linux envir
 
 ## Design recommendations for Red Hat identity Management
 
-This section describes design recommendations for IAM in Azure landing zones for RHEL when you use Red Hat Identity Management (IdM) and Red Hat SSO. These services align with the Cloud Adoption Framework for Azure and Red Hat Infrastructure Standard Adoption Model. The recommendations extend the principles that you use to implement a hybrid-cloud deployment.  
+This section describes design recommendations for IAM in Azure landing zones for RHEL when you use Red Hat Identity Management (IdM) and Red Hat SSO. These services align with the Cloud Adoption Framework for Azure and Red Hat Infrastructure Standard Adoption Model. The recommendations extend the principles that you use to implement a hybrid-cloud deployment.
 
 Red Hat IdM provides a centralized way to manage identity stores, authentication, policies, and authorization in a Linux-based domain. Red Hat IdM natively integrates with Windows Server Active Directory and Microsoft Entra ID and is included with RHEL. If you extend your on-premises Active Directory to Azure, you can benefit from the Red Hat IdM-native Windows Server Active Directory trust capability. Similarly, if you adopt Microsoft Entra ID or use an alternate identity provider, you can use Red Hat IdM and Red Hat SSO for seamless integration. Red Hat SSO is a supported enterprise implementation of the Keycloak open-source project. It's provided at no extra cost with various Red Hat subscriptions, including Red Hat Ansible Automation Platform. Red Hat recommends that you implement Red Hat IdM within your RHEL deployment in Azure. The following diagram shows a RHEL management subscription deployment.
 
@@ -76,17 +76,17 @@ Consider the following critical design recommendations for your Red Hat IdM depl
 
 - Implement enterprise and application identity support. Understand which services are exposed by instances and which services require authentication at the operating system level and the application level. Use Red Hat IdM to implement OS layer security, host-based access control rules, and privilege escalation management rules such as sudo. You can also use Red Hat IdM to map SELinux policies and map identities for legacy systems. Use Red Hat SSO to integrate enterprise authentication sources with web-based applications.
 
-- Use centralized identity management for threat response. You can instantly invalidate or rotate compromised credentials across cloud-scale deployments. 
+- Use centralized identity management for threat response. You can instantly invalidate or rotate compromised credentials across cloud-scale deployments.
 
-- Determine the initial integration path for Azure-native identity providers, such as Windows Server Active Directory and Microsoft Entra ID. Red Hat IdM supports several integration options. You can add and remove integrations within IdM, but you should evaluate existing requirements, migration effects, and the cost of change over time.  
+- Determine the initial integration path for Azure-native identity providers, such as Windows Server Active Directory and Microsoft Entra ID. Red Hat IdM supports several integration options. You can add and remove integrations within IdM, but you should evaluate existing requirements, migration effects, and the cost of change over time.
 
-- Configure Red Hat IdM primary deployments and replica deployments to reduce latencies and ensure that there's no single point of failure in replication. Geographical deployments of RHEL instances affect your Red Hat IdM infrastructure. You can use Red Hat IdM to deploy multiple Red Hat IdM replicas, which provides improved performance, load balancing, failover, and high availability. Deployments can consist of up to 60 replicas. Replica deployments should ensure that systems span fault domains. Manage Red Hat IdM replica updates via automation to ensure replication consistency. Use Red Hat-recommended replication topologies.  
+- Configure Red Hat IdM primary deployments and replica deployments to reduce latencies and ensure that there's no single point of failure in replication. Geographical deployments of RHEL instances affect your Red Hat IdM infrastructure. You can use Red Hat IdM to deploy multiple Red Hat IdM replicas, which provides improved performance, load balancing, failover, and high availability. Deployments can consist of up to 60 replicas. Replica deployments should ensure that systems span fault domains. Manage Red Hat IdM replica updates via automation to ensure replication consistency. Use Red Hat-recommended replication topologies.
 
 - Ensure that you properly set up the Windows Server Active Directory trust configuration and Domain Name System (DNS) configuration. When you configure Red Hat IdM and Windows Server Active Directory, both on-premises Active Directory servers and Red Hat IdM servers need to reside in their own DNS domains or subdomains. This requirement is because of Kerberos service records and Kerberos service discovery. The Cloud Adoption Framework recommends [private IP DNS resolution](/azure/cloud-adoption-framework/ready/azure-best-practices/dns-for-on-premises-and-azure-resources) for Azure-based instances.
 
 - Configure Red Hat Satellite for Red Hat IdM integration to automate management tasks such as forward and reverse DNS zones, host registration, and Secure Shell (SSH) key generation and registration within Red Hat IdM. Red Hat IdM provides an integrated DNS service. Combine this integration with the Windows Server Active Directory trust so that Windows Server Active Directory users can seamlessly sign in to RHEL systems and services via SSO.
 
-- Back up your Red Hat IdM resources. Typically, you deploy Red Hat IdM in a self-managed multi-main replica configuration, but you must also ensure that you have proper system and data backups. Use Red Hat IdM hidden replicas to implement full offline backups without interrupting service availability. Use Azure Backup for encrypted backup facility. 
+- Back up your Red Hat IdM resources. Typically, you deploy Red Hat IdM in a self-managed multi-main replica configuration, but you must also ensure that you have proper system and data backups. Use Red Hat IdM hidden replicas to implement full offline backups without interrupting service availability. Use Azure Backup for encrypted backup facility.
 
 - Have an external certificate authority (CA), corporate CA, or partner CA sign the Red Hat IdM root certificate when you deploy RHEL with the integrated CA.
 
@@ -98,11 +98,13 @@ Use the [Planning Identity Management guide](https://docs.redhat.com/documentati
 
 - Use Azure RHEL virtual machines with Microsoft Entra ID to limit user rights and minimize the number of users who have administrator rights. Limit user rights to protect the configuration and secrets access. For more information, see [Azure built-in roles for compute](/azure/role-based-access-control/built-in-roles/compute).
 
-- Follow the principle of least privilege, and assign the minimum permissions that users need for authorized tasks. Give full access and just-in-time access only as needed. Use [Microsoft Entra PIM](/azure/defender-for-cloud/just-in-time-access-usage) and [IAM in Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access).  
+- Follow the principle of least privilege, and assign the minimum permissions that users need for authorized tasks. Give full access and just-in-time access only as needed. Use [Microsoft Entra PIM](/azure/defender-for-cloud/just-in-time-access-usage) and [IAM in Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access).
 
 - Use [managed identities](/entra/identity/managed-identities-azure-resources/overview) to access Microsoft Entra ID protected RHEL resources without needing to manage secrets for workloads that run on Azure.
 
 - Consider using Microsoft Entra ID as a core authentication platform and a certificate authority to [SSH into a Linux VM](/entra/identity/devices/howto-vm-sign-in-azure-ad-linux).
+
+- Consider generating and storing [SSH keys in Azure](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal)
 
 - Protect sensitive information such as keys, secrets, and certificates. For more information, see [Cloud Adoption Framework for encryption and key management in Azure](/azure/cloud-adoption-framework/ready/landing-zone/design-area/encryption-and-keys).
 

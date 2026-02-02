@@ -104,7 +104,7 @@ You can use Compute Gallery to store golden images for deployments. Use these im
 
 ### Site Recovery
 
-[Site Recovery](/azure/site-recovery/site-recovery-overview) can enhance the resilience of some RHEL components. For a list of supported RHEL site recovery servers, see [Support matrix for Azure VM disaster recovery with Site Recovery](/azure/site-recovery/azure-to-azure-support-matrix#linux). You can also set up Site Recovery as a [failover from on-premises environments to the cloud](/azure/site-recovery/failover-failback-overview-modernized). To get an estimate of Site Recovery costs, use the [Site Recovery deployment planner](/azure/site-recovery/hyper-v-deployment-planner-cost-estimation).
+[Site Recovery](/azure/site-recovery/site-recovery-overview) can enhance the resilience of some RHEL components including VMs leveraging Azure [trusted launch](https://learn.microsoft.com/en-us/azure/site-recovery/concepts-trusted-vm). For a list of supported RHEL site recovery servers, see [Support matrix for Azure VM disaster recovery with Site Recovery](/azure/site-recovery/azure-to-azure-support-matrix#linux). You can also set up Site Recovery as a [failover from on-premises environments to the cloud](/azure/site-recovery/failover-failback-overview-modernized). To get an estimate of Site Recovery costs, use the [Site Recovery deployment planner](/azure/site-recovery/hyper-v-deployment-planner-cost-estimation).
 
 ### Recovery cluster nodes
 

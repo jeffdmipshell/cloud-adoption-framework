@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 This article describes considerations and recommendations to implement security in your Red Hat Enterprise Linux (RHEL) environment. To provide security for your RHEL systems, use an approach that targets multiple areas. Security requires that all teams work together to secure your workloads. Products or platforms that you deploy can't solely ensure security for your environment.
 
-Implement and adhere to a rigorous process that encompasses behavioral, administrative, and engineering components. When you deploy RHEL in an Azure landing zone, you need to evaluate several security factors. To create a secure and resilient cloud environment, implement a strategic approach that applies both Azure and Red Hat security mechanisms. 
+Implement and adhere to a rigorous process that encompasses behavioral, administrative, and engineering components. When you deploy RHEL in an Azure landing zone, you need to evaluate several security factors. To create a secure and resilient cloud environment, implement a strategic approach that applies both Azure and Red Hat security mechanisms.
 
 ## Design considerations
 
@@ -72,7 +72,7 @@ To centrally enforce strict access policies, integrate [Red Hat Identity Managem
 
 - Role-based access control (RBAC)
 - Host-based access control
-- Privilege escalation policy 
+- Privilege escalation policy
 - SELinux user mapping policy
 - Other critical Linux services
 
@@ -135,6 +135,9 @@ Consider [Microsoft Sentinel](/azure/sentinel/overview) for security orchestrati
 
 RHEL features a confidential image for [certain RHEL operating system options](/azure/confidential-computing/confidential-vm-overview#os-support). Consider confidential computing [use cases](/azure/confidential-computing/use-cases-scenarios).
 
+### Consider Trusted Launch for Azure VMs
+
+At the root of [Trusted Launch](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch) is Secure Boot for VMs.  Secure Boot, which is implemented in platform firmware, protects against the installation of malware-based rootkits and boot kits. Secure Boot works to ensure that only signed operating systems and drivers can boot, is now supported by [RHEL operating systems.](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/deploying_and_managing_rhel_on_microsoft_azure/configuring-rhel-on-azure-with-secure-boot#understanding-secure-boot-for-rhel-on-cloud)
 ## Next steps
 
 - [Management and monitoring for RHEL on Azure](./management-monitoring.md)

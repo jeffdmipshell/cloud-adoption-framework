@@ -104,7 +104,7 @@ Use the [Planning Identity Management guide](https://docs.redhat.com/documentati
 
 - Consider using Microsoft Entra ID as a core authentication platform and a certificate authority to [SSH into a Linux VM](/entra/identity/devices/howto-vm-sign-in-azure-ad-linux).
 
-- Consider generating and storing [SSH keys in Azure](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal)
+- Consider generating and storing [SSH keys in Azure](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal).
 
 - Protect sensitive information such as keys, secrets, and certificates. For more information, see [Cloud Adoption Framework for encryption and key management in Azure](/azure/cloud-adoption-framework/ready/landing-zone/design-area/encryption-and-keys).
 

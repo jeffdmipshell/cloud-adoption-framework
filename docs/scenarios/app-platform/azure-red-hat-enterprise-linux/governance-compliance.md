@@ -98,7 +98,7 @@ For comprehensive recommendations about subscription design, see [Cloud Adoption
 
 Use [Azure Policy](/azure/governance/policy/overview) to enforce governance standards and implement regulatory initiatives. Azure policies are guardrails that help enforce compliance across security, cost, regulatory compliance, resources, and management. You can use the compliance dashboard to view compliance for each resource or policy. You can also use Azure Policy to perform remediation.
 
-Use Policy to [Audit Azure Security for Linux](https://learn.microsoft.com/en-us/azure/osconfig/overview-baseline)  New functionality includes auto-remediation features (in public preview).
+Use Policy to [Audit Azure Security for Linux](https://learn.microsoft.com/en-us/azure/osconfig/overview-baseline).  New functionality includes auto-remediation features (in public preview).
 
 You can use Red Hat Satellite with Ansible Automation Platform to develop pipelines for content and image delivery that integrate your workload compliance requirements.
 
